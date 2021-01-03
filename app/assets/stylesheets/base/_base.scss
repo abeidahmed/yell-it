@@ -52,7 +52,8 @@ th {
   padding: 0;
 }
 
-button {
+button,
+input[type='submit'] {
   cursor: pointer;
   border-radius: 0;
 }
