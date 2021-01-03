@@ -3,3 +3,17 @@
   border: $border-width $border-style $border-color;
   border-radius: $border-radius;
 }
+
+.box-footer {
+  border-top: $border-width $border-style $border-color;
+}
+
+.box--spacious {
+  .box-body {
+    padding: $spacer-4;
+  }
+
+  .box-footer {
+    padding: $spacer-4;
+  }
+}
