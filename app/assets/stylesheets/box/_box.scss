@@ -1,11 +1,11 @@
 .box {
   background-color: $bg-white;
-  border: $border-width $border-style $border-color;
+  border: $border;
   border-radius: $border-radius;
 }
 
 .box-footer {
-  border-top: $border-width $border-style $border-color;
+  border-top: $border;
 }
 
 .box--spacious {
