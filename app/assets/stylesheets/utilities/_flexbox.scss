@@ -18,6 +18,7 @@ $align-items: (
 // Justify contents
 $justify-contents: (
   center: center,
+  between: space-between,
 );
 
 @each $breakpoint in map-keys($breakpoints) {
