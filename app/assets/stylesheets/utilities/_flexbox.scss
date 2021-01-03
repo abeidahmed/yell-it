@@ -1,0 +1,33 @@
+// Align items
+$align-items: (
+  center: center,
+);
+
+@each $breakpoint in map-keys($breakpoints) {
+  $infix: breakpoint-infix($breakpoint);
+
+  @include breakpoint($breakpoint) {
+    @each $prop, $value in $align-items {
+      .items-#{$infix}#{$prop} {
+        align-items: $value !important;
+      }
+    }
+  }
+}
+
+// Justify contents
+$justify-contents: (
+  center: center,
+);
+
+@each $breakpoint in map-keys($breakpoints) {
+  $infix: breakpoint-infix($breakpoint);
+
+  @include breakpoint($breakpoint) {
+    @each $prop, $value in $justify-contents {
+      .justify-#{$infix}#{$prop} {
+        justify-content: $value !important;
+      }
+    }
+  }
+}
