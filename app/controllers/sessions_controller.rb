@@ -11,4 +11,8 @@ class SessionsController < ApplicationController
       render json: { errors: { invalid: ["credentials"] } }, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    sign_out_user
+  end
 end
