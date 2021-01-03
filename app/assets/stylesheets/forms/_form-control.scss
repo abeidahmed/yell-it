@@ -1,6 +1,14 @@
 label {
   font-weight: $font-weight-semibold;
+}
+
+.form-hint,
+label {
   line-height: 20px;
+}
+
+.form-hint {
+  color: $text-gray;
 }
 
 .form-control {

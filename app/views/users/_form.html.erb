@@ -8,7 +8,10 @@
     <%= form.email_field :email_address, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= form.label :password %>
+    <div class="flex items-center">
+      <%= form.label :password %>
+      <span class="ml-1 lh-5 form-hint">(min. 6 characters)</span>
+    </div>
     <%= form.password_field :password, class: "form-control" %>
   </div>
   <div class="form-group">

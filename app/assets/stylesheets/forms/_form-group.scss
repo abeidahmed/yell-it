@@ -1,5 +1,6 @@
 .form-group {
-  label {
+  label,
+  .form-hint {
     margin-bottom: 8px;
     display: inline-block;
   }
