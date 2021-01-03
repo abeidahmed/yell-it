@@ -1,11 +1,18 @@
-<%= form_with url: sessions_path do |form| %>
-  <%= form.label :email_address %>
-  <%= form.email_field :email_address %>
-
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-
-  <%= form.submit "Sign in" %>
-<% end %>
-
-<%= link_to "Sign up", new_user_path %>
+<main class="flex justify-center bg-gray min-h-screen py-9 px-3">
+  <div class="w-full">
+    <h1 class="text-center mb-4 m1">Sign in to your account</h1>
+    <div class="w-full max-w-sm mx-auto">
+      <div class="box box--spacious">
+        <div class="box-body">
+          <%= render "form", url: sessions_path %>
+        </div>
+        <div class="box-footer text-gray text-center">
+          Don't have an account? <%= link_to "Sign up", new_user_path %>
+        </div>
+      </div>
+      <p class="mt-5 text-center text-gray f6">
+        Having trouble? Contact us.
+      </p>
+    </div>
+  </div>
+</main>

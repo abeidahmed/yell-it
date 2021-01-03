@@ -1,0 +1,16 @@
+<%= form_with url: url do |form| %>
+  <div class="form-group">
+    <%= form.label :email_address %>
+    <%= form.email_field :email_address, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <div class="flex items-center justify-between">
+      <%= form.label :password %>
+      <%= link_to "Forgot password?", "#", class: "mb-2 lh-5" %>
+    </div>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.submit "Sign in", class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>
