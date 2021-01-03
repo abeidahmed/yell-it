@@ -11,9 +11,37 @@
 // $h5-size: 14px;
 // $h6-size: 12px;
 
-// Font size
+// Heading utilities
+.h1,
+.m1 {
+  font-size: $h1-size-mobile !important;
+
+  @include breakpoint(md) {
+    font-size: $h1-size !important;
+  }
+}
+
 .f6 {
   font-size: $h6-size !important;
+}
+
+// Font weights
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: $font-weight-semibold !important;
+}
+
+.m1,
+.m2,
+.m3,
+.m4,
+.m5,
+.m6 {
+  font-weight: $font-weight-bold !important;
 }
 
 // Text alignments
