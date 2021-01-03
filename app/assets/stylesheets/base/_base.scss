@@ -37,7 +37,8 @@ hr {
   overflow: hidden;
   background: transparent;
   height: 0;
-  border: $border-width $border-style $border-color;
+  border: 0;
+  border-bottom: $border-width $border-style $border-color;
   margin: 16px 0;
 }
 
