@@ -52,12 +52,6 @@ th {
   padding: 0;
 }
 
-button,
-input[type='submit'] {
-  cursor: pointer;
-  border-radius: 0;
-}
-
 // Increase the selector specificity for [hidden]
 // so that it always overrides utility classes (.d-block, etc.)
 [hidden][hidden] {
@@ -75,4 +69,21 @@ details {
       display: none !important;
     }
   }
+}
+
+// Remove margin from elements
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
 }
