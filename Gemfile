@@ -18,7 +18,7 @@ group :development, :test do
   gem "rubocop", "~> 1.7"
   gem "rubocop-rspec", "~> 2.1"
   gem "rubocop-rails", "~> 2.9", ">= 2.9.1"
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "byebug", platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -28,4 +28,4 @@ group :development do
   gem "spring"
 end
 
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
