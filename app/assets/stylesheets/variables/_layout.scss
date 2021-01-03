@@ -13,3 +13,26 @@ $breakpoints: (
   lg: $width-lg,
   xl: $width-xl,
 );
+
+// Spacing scale
+$spacer: 8px;
+
+$spacer-0: 0;
+$spacer-1: round($spacer / 2);
+$spacer-2: $spacer;
+$spacer-3: $spacer * 2;
+$spacer-4: $spacer * 3;
+$spacer-5: $spacer * 4;
+$spacer-6: $spacer * 5;
+$spacer-9: $spacer * 8;
+
+$spacer-map: (
+  0: $spacer-0,
+  1: $spacer-1,
+  2: $spacer-2,
+  3: $spacer-3,
+  4: $spacer-4,
+  5: $spacer-5,
+  6: $spacer-6,
+  9: $spacer-9,
+);
