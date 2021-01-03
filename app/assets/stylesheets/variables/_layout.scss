@@ -1,0 +1,15 @@
+// Breakpoint widths
+$width-xs: 0;
+$width-sm: 544px;
+$width-md: 768px;
+$width-lg: 1012px;
+$width-xl: 1280px;
+
+// Breakpoints map
+$breakpoints: (
+  xs: $width-xs,
+  sm: $width-sm,
+  md: $width-md,
+  lg: $width-lg,
+  xl: $width-xl,
+);
