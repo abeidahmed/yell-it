@@ -4,13 +4,13 @@
     display: inline-block;
   }
 
+  &:not(:first-of-type) {
+    margin-top: 16px;
+  }
+
   .form-control {
     display: block;
     width: 100%;
     max-width: 416px;
-  }
-
-  &:not(:first-of-type) {
-    margin-top: 16px;
   }
 }
