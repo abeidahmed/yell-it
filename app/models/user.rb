@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :memberships, dependent: :destroy
+  has_many :projects, through: :memberships
+
   before_validation :trim_white_spaces
   before_save :normalize_email_address
   before_create :generate_auth_token
