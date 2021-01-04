@@ -1,0 +1,7 @@
+<main class="d-flex flex-justify-center bg-gray min-h-screen py-9 px-3">
+  <div class="width-full">
+    <h1 class="text-center mb-4 m1"><%= page_heading %></h1>
+    <div class="Box Box--spacious max-w-sm mx-auto"><%= yield %></div>
+    <%= yield :footer if content_for? :footer %>
+  </div>
+</main>

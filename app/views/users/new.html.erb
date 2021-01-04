@@ -1,16 +1,13 @@
-<main class="d-flex flex-justify-center bg-gray min-h-screen py-9 px-3">
-  <div class="width-full">
-    <h1 class="text-center mb-4 m1">Create an account</h1>
-    <div class="Box Box--spacious max-w-sm mx-auto">
-      <div class="Box-body">
-        <%= render "form", model: @user %>
-      </div>
-      <div class="Box-footer text-gray text-center">
-        Already have an account? <%= link_to "Sign in", new_session_path %>
-      </div>
-    </div>
+<%= render "templates/focussed", page_heading: "Create an account" do %>
+  <div class="Box-body">
+    <%= render "form", model: @user %>
+  </div>
+  <div class="Box-footer text-gray text-center">
+    Already have an account? <%= link_to "Sign in", new_session_path %>
+  </div>
+  <% content_for :footer do %>
     <p class="mt-5 text-center text-gray f6">
       By signing up, you agree to the Terms and Privacy policy.
     </p>
-  </div>
-</main>
+  <% end %>
+<% end %>

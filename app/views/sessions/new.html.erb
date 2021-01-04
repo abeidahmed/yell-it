@@ -1,16 +1,13 @@
-<main class="d-flex flex-justify-center bg-gray min-h-screen py-9 px-3">
-  <div class="width-full">
-    <h1 class="text-center mb-4 m1">Sign in to your account</h1>
-    <div class="Box Box--spacious max-w-sm mx-auto">
-      <div class="Box-body">
-        <%= render "form", url: sessions_path %>
-      </div>
-      <div class="Box-footer text-gray text-center">
-        Don't have an account? <%= link_to "Sign up", new_user_path %>
-      </div>
-    </div>
+<%= render "templates/focussed", page_heading: "Sign in to your account" do %>
+  <div class="Box-body">
+    <%= render "form", url: sessions_path %>
+  </div>
+  <div class="Box-footer text-gray text-center">
+    Don't have an account? <%= link_to "Sign up", new_user_path %>
+  </div>
+  <% content_for :footer do %>
     <p class="mt-5 text-center text-gray f6">
       Having trouble? Contact us.
     </p>
-  </div>
-</main>
+  <% end %>
+<% end %>
