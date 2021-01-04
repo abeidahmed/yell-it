@@ -6,6 +6,7 @@
   background-color: $bg-gray-light;
   position: fixed;
   top: $header-height;
+  z-index: 100;
 
   @include breakpoint(lg) {
     position: static;
