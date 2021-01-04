@@ -1,18 +1,16 @@
-<main class="flex justify-center bg-gray min-h-screen py-9 px-3">
-  <div class="w-full">
+<main class="d-flex flex-justify-center bg-gray min-h-screen py-9 px-3">
+  <div class="width-full">
     <h1 class="text-center mb-4 m1">Create an account</h1>
-    <div class="w-full max-w-sm mx-auto">
-      <div class="box box--spacious">
-        <div class="box-body">
-          <%= render "form", model: @user %>
-        </div>
-        <div class="box-footer text-gray text-center">
-          Already have an account? <%= link_to "Sign in", new_session_path %>
-        </div>
+    <div class="Box Box--spacious container-xs">
+      <div class="Box-body">
+        <%= render "form", model: @user %>
       </div>
-      <p class="mt-5 text-center text-gray f6">
-        By signing up, you agree to the Terms and Privacy policy.
-      </p>
+      <div class="Box-footer text-gray text-center">
+        Already have an account? <%= link_to "Sign in", new_session_path %>
+      </div>
     </div>
+    <p class="mt-5 text-center text-gray f6">
+      By signing up, you agree to the Terms and Privacy policy.
+    </p>
   </div>
 </main>
