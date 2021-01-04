@@ -19,11 +19,11 @@
     <div class="form-group-header">
       <div class="flex items-center">
         <%= form.label :password %>
-        <span class="ml-1 lh-5 form-hint">(min. 6 characters)</span>
+        <span id="password-hint" class="ml-1 text-gray">(min. 6 characters)</span>
       </div>
     </div>
     <div class="form-group-body">
-      <%= form.password_field :password, class: "form-control width-full" %>
+      <%= form.password_field :password, class: "form-control width-full", aria: { describedBy: "password-hint" } %>
     </div>
   </div>
   <%= form.submit "Create account", class: "btn btn-primary btn-block" %>
