@@ -10,6 +10,7 @@ gem "sass-rails", ">= 6"
 gem "webpacker", "~> 5.0"
 gem "bcrypt", "~> 3.1.7"
 gem "turbo-rails"
+gem "octicons_helper"
 # gem "redis", "~> 4.0"
 # gem "image_processing", "~> 1.2"
 
