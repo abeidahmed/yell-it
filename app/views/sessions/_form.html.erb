@@ -1,10 +1,10 @@
-<%= form_with url: url do |form| %>
+<%= form_with url: url, data: { controller: "form", action: "turbo:submit-end->form#onError" } do |form| %>
   <div class="form-group mt-0">
     <div class="form-group-header">
       <%= form.label :email_address %>
     </div>
     <div class="form-group-body">
-      <%= form.email_field :email_address, class: "form-control" %>
+      <%= form.email_field :email_address, class: "form-control", required: true %>
     </div>
   </div>
   <div class="form-group">
@@ -15,8 +15,9 @@
       </div>
     </div>
     <div class="form-group-body">
-      <%= form.password_field :password, class: "form-control" %>
+      <%= form.password_field :password, class: "form-control", required: true %>
     </div>
+    <%= render "shared/form_errors", error_type: "invalid" %>
   </div>
   <%= form.submit "Sign in", class: "btn btn-primary btn-block" %>
 <% end %>
