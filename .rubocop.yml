@@ -137,6 +137,9 @@ Style/ReturnNil:
 Style/SingleArgumentDig:
   Enabled: true
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Style/StringLiterals:
   StyleGuide: '#consistent-string-literals'
   Enabled: true
