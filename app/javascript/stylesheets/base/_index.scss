@@ -1,0 +1,7 @@
+button,
+input[type='submit'],
+summary {
+  &:focus:not([data-focus-visible-added]) {
+    outline: none !important;
+  }
+}
