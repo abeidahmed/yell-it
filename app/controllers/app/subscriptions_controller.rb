@@ -1,5 +1,7 @@
 class App::SubscriptionsController < App::BaseController
-  layout "stripe", only: :new
+  layout "stripe"
 
   def new; end
+
+  def create; end
 end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :app do
     resources :projects, only: %i[show] do
       resources :labels, only: %i[index]
-      resources :subscriptions, only: %i[new]
+      resources :subscriptions, only: %i[new create]
     end
   end
 end
