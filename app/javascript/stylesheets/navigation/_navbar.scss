@@ -6,3 +6,14 @@
   border-bottom: $border;
   padding: 0 $spacer-3;
 }
+
+.Navbar-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include breakpoint(md) {
+    position: static;
+    transform: translateX(0);
+  }
+}
