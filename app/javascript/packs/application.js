@@ -9,3 +9,4 @@ import 'channels';
 ActiveStorage.start();
 
 import 'controllers';
+import 'stylesheets/index.scss';
