@@ -16,6 +16,8 @@ RSpec.describe User, type: :model do
 
     it { is_expected.not_to allow_value("abeidmama", "abeidm@em@.com").for(:email_address) }
 
+    it { is_expected.to validate_presence_of(:full_name) }
+
     it { is_expected.to validate_length_of(:full_name).is_at_most(255) }
 
     it "does lowercase email_address before saving" do
