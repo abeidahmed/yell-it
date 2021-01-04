@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_110901) do
     t.string "subdomain"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["subdomain"], name: "index_projects_on_subdomain"
+    t.index ["subdomain"], name: "index_projects_on_subdomain", unique: true
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
