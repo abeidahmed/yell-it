@@ -3,7 +3,7 @@ FactoryBot.define do
     project
     user
     join_date { "2020-11-23 09:33:17" }
-    role { "member" }
+    role { "editor" }
 
     trait :pending do
       join_date { "" }

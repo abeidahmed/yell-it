@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2021_01_04_115413) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["join_date", "role"], name: "index_memberships_on_join_date_and_role"
-    t.index ["project_id"], name: "index_memberships_on_project_id"
-    t.index ["user_id"], name: "index_memberships_on_user_id"
+    t.index ["project_id"], name: "index_memberships_on_project_id", unique: true
+    t.index ["user_id"], name: "index_memberships_on_user_id", unique: true
   end
 
   create_table "projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
