@@ -13,8 +13,13 @@
     <%= turbo_include_tags %>
   </head>
 
-  <body>
+  <body data-controller="sidebar">
     <%= render "app/headers/default" %>
-    <%= yield %>
+    <div class="d-flex">
+      <%= render "app/sidebars/default" %>
+      <main class="flex-1">
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

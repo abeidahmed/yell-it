@@ -1,0 +1,46 @@
+.Sidebar {
+  height: calc(100vh - #{$header-height});
+  width: 256px;
+  padding: $spacer-3 0;
+  border-right: $border;
+  background-color: $bg-gray-light;
+  position: fixed;
+  top: $header-height;
+
+  @include breakpoint(lg) {
+    position: static;
+  }
+}
+
+.Sidebar-nav {
+  padding: $spacer-3 0;
+}
+
+.Sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 8px $spacer-3;
+
+  span {
+    color: $text-gray-dark;
+    line-height: 20px;
+    margin-left: 8px;
+  }
+
+  .octicon {
+    color: $gray-400;
+  }
+
+  &:hover {
+    text-decoration: none;
+    background-color: $bg-gray;
+  }
+}
+
+.Sidebar-item[aria-selected='true'] {
+  box-shadow: inset 4px 0 0 #f9826c;
+
+  span {
+    font-weight: $font-weight-semibold;
+  }
+}
