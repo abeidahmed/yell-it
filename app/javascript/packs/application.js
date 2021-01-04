@@ -5,8 +5,8 @@
 
 import * as ActiveStorage from '@rails/activestorage';
 import 'channels';
+import 'stylesheets/application.scss';
 
 ActiveStorage.start();
 
 import 'controllers';
-import 'stylesheets/index.scss';
