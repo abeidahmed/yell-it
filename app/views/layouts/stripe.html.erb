@@ -9,17 +9,12 @@
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
     <%= stylesheet_pack_tag "application", media: "all", "data-turbo-track": "reload" %>
     <%= javascript_pack_tag "application", "data-turbo-track": "reload" %>
+    <script src="https://js.stripe.com/v3/"></script>
     <%= yield :head %>
     <%= turbo_include_tags %>
   </head>
 
-  <body data-controller="sidebar">
-    <%= render "app/headers/default" %>
-    <div class="d-flex">
-      <%= render "app/sidebars/default" %>
-      <main class="flex-1">
-        <%= yield %>
-      </main>
-    </div>
+  <body>
+    <%= yield %>
   </body>
 </html>
