@@ -1,18 +1,16 @@
-<main class="flex justify-center bg-gray min-h-screen py-9 px-3">
-  <div class="w-full">
+<main class="d-flex flex-justify-center bg-gray min-h-screen py-9 px-3">
+  <div class="width-full">
     <h1 class="text-center mb-4 m1">Sign in to your account</h1>
-    <div class="w-full max-w-sm mx-auto">
-      <div class="box box--spacious">
-        <div class="box-body">
-          <%= render "form", url: sessions_path %>
-        </div>
-        <div class="box-footer text-gray text-center">
-          Don't have an account? <%= link_to "Sign up", new_user_path %>
-        </div>
+    <div class="Box Box--spacious container-xs">
+      <div class="Box-body">
+        <%= render "form", url: sessions_path %>
       </div>
-      <p class="mt-5 text-center text-gray f6">
-        Having trouble? Contact us.
-      </p>
+      <div class="Box-footer text-gray text-center">
+        Don't have an account? <%= link_to "Sign up", new_user_path %>
+      </div>
     </div>
+    <p class="mt-5 text-center text-gray f6">
+      Having trouble? Contact us.
+    </p>
   </div>
 </main>
