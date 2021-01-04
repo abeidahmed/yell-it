@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_04_110901) do
+ActiveRecord::Schema.define(version: 2021_01_04_115413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "join_date"
+    t.string "role", default: "editor", null: false
+    t.uuid "project_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["join_date", "role"], name: "index_memberships_on_join_date_and_role"
+    t.index ["project_id"], name: "index_memberships_on_project_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
 
   create_table "projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -35,4 +47,6 @@ ActiveRecord::Schema.define(version: 2021_01_04_110901) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "memberships", "projects"
+  add_foreign_key "memberships", "users"
 end
