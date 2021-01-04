@@ -26,27 +26,56 @@ export default class extends ApplicationController {
     });
   }
 
-  submitForm(e) {
+  async submitForm(e) {
     e.preventDefault();
 
-    this.stripe.createToken(this.card).then((result) => {
-      if (result.error) {
-        this.cardErrorsTarget.textContent = result.error.message;
-      } else {
-        this.stripeTokenHandler(result.token);
-      }
-    });
+    try {
+      const token = await this.stripe.createToken(this.card);
+      const pm = await this.stripe.createPaymentMethod({
+        type: 'card',
+        card: this.card,
+      });
+
+      this.stripeTokenHandler(token.token, pm.paymentMethod.id);
+    } catch (e) {
+      this.cardErrorsTarget.textContent = e.error.message;
+    }
+
+    // this.stripe.createToken(this.card).then((result) => {
+    //   if (result.error) {
+    //     this.cardErrorsTarget.textContent = result.error.message;
+    //   } else {
+    //     this.stripe
+    //       .createPaymentMethod({
+    //         type: 'card',
+    //         card: this.card,
+    //       })
+    //       .then((pm) => {
+    //         if (pm.error) {
+    //           this.cardErrorsTarget.textContent = pm.error.message;
+    //         } else {
+    //           this.stripeTokenHandler(result.token, pm.paymentMethod.id);
+    //         }
+    //       });
+    //   }
+    // });
   }
 
-  stripeTokenHandler(token) {
+  stripeTokenHandler(token, pm) {
     const hiddenInput = document.createElement('input');
     hiddenInput.setAttribute('type', 'hidden');
-    hiddenInput.setAttribute('name', 'stripeToken');
+    hiddenInput.setAttribute('name', 'stripe_token');
     hiddenInput.setAttribute('value', token.id);
     this.element.appendChild(hiddenInput);
 
+    const pmHiddenInput = document.createElement('input');
+    pmHiddenInput.setAttribute('type', 'hidden');
+    pmHiddenInput.setAttribute('name', 'pm_token');
+    pmHiddenInput.setAttribute('value', pm);
+    this.element.appendChild(pmHiddenInput);
+
     // Submit the form
-    // this.element.submit();
+    this.element.submit();
   }
 
   get publicKey() {
