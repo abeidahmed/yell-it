@@ -1,0 +1,10 @@
+// Font sizes
+.m1 {
+  font-size: $h1-size-mobile !important;
+  font-weight: $font-weight-bolder !important;
+  line-height: $lh-condensed !important;
+
+  @include breakpoint(md) {
+    font-size: $h1-size !important;
+  }
+}
