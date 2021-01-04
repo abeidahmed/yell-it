@@ -7,9 +7,15 @@
   position: fixed;
   top: $header-height;
   z-index: 100;
+  display: none;
+
+  &.Sidebar--active {
+    display: block;
+  }
 
   @include breakpoint(lg) {
     position: static;
+    display: block;
   }
 }
 

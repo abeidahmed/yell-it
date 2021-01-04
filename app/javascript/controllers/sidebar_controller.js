@@ -1,11 +1,9 @@
 import ApplicationController from './application_controller';
 
 export default class extends ApplicationController {
-  static targets = ['toggleable'];
+  static targets = ['aside'];
 
   toggle() {
-    this.toggleableTargets.forEach((target) => {
-      target.toggleAttribute('hidden');
-    });
+    this.asideTarget.classList.toggle('Sidebar--active');
   }
 }
