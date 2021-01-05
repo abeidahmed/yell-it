@@ -6,23 +6,24 @@ class App::SubscriptionsController < App::BaseController
   def create
     project = Project.find("d3025110-1ffa-4c84-bc47-48c680289147")
 
-    customer = if project.stripe_customer_id.present?
-                 Stripe::Customer.retrieve(project.stripe_customer_id)
-               else
-                 Stripe::Customer.create(
-                   source: params[:stripe_token],
-                   name: "Mama Ahmed",
-                   email: "mama@dad.com",
-                   description: "hello world",
-                   address: {
-                     city: "Hawaii",
-                     country: "United States",
-                     line1: "Hello world",
-                     postal_code: "232323",
-                     state: "Lousina"
-                   },
-                 )
-               end
+    customer =
+      if project.stripe_customer_id?
+        Stripe::Customer.retrieve(project.stripe_customer_id)
+      else
+        Stripe::Customer.create(
+          source: params[:stripe_token],
+          name: "Mama Ahmed",
+          email: "mama@dad.com",
+          description: "hello world",
+          address: {
+            city: "Hawaii",
+            country: "United States",
+            line1: "Hello world",
+            postal_code: "232323",
+            state: "Lousina"
+          },
+        )
+      end
 
     subscription = Stripe::Subscription.create(
       customer: customer.id,
