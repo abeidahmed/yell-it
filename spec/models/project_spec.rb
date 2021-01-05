@@ -16,7 +16,17 @@ RSpec.describe Project, type: :model do
 
     it { is_expected.to validate_length_of(:subdomain).is_at_most(63) }
 
+    it { is_expected.to validate_presence_of(:subdomain) }
+
     it { is_expected.to validate_uniqueness_of(:subdomain).case_insensitive }
+
+    # rubocop:disable RSpec/ImplicitSubject, Layout/MultilineMethodCallIndentation
+    it {
+      is_expected.to define_enum_for(:plan)
+      .with_values(free: "free", premium: "premium")
+      .backed_by_column_of_type(:string)
+    }
+    # rubocop:enable RSpec/ImplicitSubject, Layout/MultilineMethodCallIndentation
   end
 
   describe "before saving" do
@@ -24,11 +34,6 @@ RSpec.describe Project, type: :model do
       subdomain = "helloworld"
       project   = create(:project, subdomain: subdomain.upcase)
       expect(project.reload.subdomain).to eq(subdomain)
-    end
-
-    it "does not throw error when lowercasing nil values" do
-      project = create(:project, subdomain: nil)
-      expect(project.reload.subdomain).to eq("")
     end
   end
 end

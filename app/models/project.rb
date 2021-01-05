@@ -4,12 +4,14 @@ class Project < ApplicationRecord
 
   before_save :normalize_subdomain
 
+  enum plan: { free: "free", premium: "premium" }
+
   validates :name, presence: true, length: { maximum: 255 }
-  validates :subdomain, length: { maximum: 63 }, uniqueness: { case_sensitive: false }
+  validates :subdomain, presence: true, length: { maximum: 63 }, uniqueness: { case_sensitive: false }
 
   private
 
   def normalize_subdomain
-    self.subdomain = subdomain.to_s.downcase
+    self.subdomain = subdomain.downcase
   end
 end

@@ -24,35 +24,35 @@ ActiveRecord::Schema.define(version: 2021_01_05_140249) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["join_date", "role"], name: "index_memberships_on_join_date_and_role"
-    t.index ["project_id"], name: "index_memberships_on_project_id", unique: true
-    t.index ["user_id"], name: "index_memberships_on_user_id", unique: true
+    t.index ["project_id"], name: "index_memberships_on_project_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.string "subdomain"
+    t.string "subdomain", default: "", null: false
     t.string "plan", default: "free", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "stripe_customer_id"
-    t.string "stripe_subscription_id"
-    t.string "card_brand"
+    t.string "stripe_customer_id", default: ""
+    t.string "stripe_subscription_id", default: ""
+    t.string "card_brand", default: ""
     t.integer "card_exp_month"
     t.integer "card_exp_year"
-    t.string "card_last4"
+    t.string "card_last4", default: ""
     t.index ["plan"], name: "index_projects_on_plan"
     t.index ["stripe_customer_id", "stripe_subscription_id"], name: "index_projects_on_stripe_customer_id_and_stripe_subscription_id"
     t.index ["subdomain"], name: "index_projects_on_subdomain", unique: true
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "full_name"
+    t.string "full_name", default: ""
     t.string "email_address", default: "", null: false
     t.string "password_digest"
     t.string "auth_token", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["auth_token", "email_address"], name: "index_users_on_auth_token_and_email_address"
+    t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
