@@ -74,8 +74,8 @@ export default class extends ApplicationController {
         },
       },
       invalid: {
-        color: '#fa755a',
-        iconColor: '#fa755a',
+        color: '#cb2431',
+        iconColor: '#f97583',
       },
     };
   }
