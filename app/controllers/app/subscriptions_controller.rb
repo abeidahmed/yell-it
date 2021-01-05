@@ -7,8 +7,8 @@ class App::SubscriptionsController < App::BaseController
     customer = Stripe::Customer.create(
       source: params[:stripe_token],
       plan: "price_1I5vshCYHrwDIsnf981UpZEc",
-      name: "John Doe",
-      email: "company@example.com",
+      name: "Abeid Ahmed",
+      email: "abeidahmed92@gmail.com",
       description: "hello world",
       address: {
         city: "Hawaii",
@@ -25,17 +25,13 @@ class App::SubscriptionsController < App::BaseController
       customer: customer.id,
       description: "hello world",
       payment_method_types: ["card"],
-      payment_method_options: {
-        card: {
-          request_three_d_secure: "any"
-        }
-      },
     )
 
-    Stripe::PaymentIntent.confirm(intent.id, {
-      payment_method: params[:pm_token]
+    confirm_intent = Stripe::PaymentIntent.confirm(intent.id, {
+      payment_method: params[:pm_token],
+      return_url: app_confirm_subscription_url
     })
 
-    # raise intent
+    redirect_to confirm_intent.next_action.redirect_to_url.url if confirm_intent.next_action
   end
 end

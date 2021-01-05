@@ -30,51 +30,31 @@ export default class extends ApplicationController {
     e.preventDefault();
 
     try {
-      const token = await this.stripe.createToken(this.card);
-      const pm = await this.stripe.createPaymentMethod({
+      const { token } = await this.stripe.createToken(this.card);
+      const { paymentMethod } = await this.stripe.createPaymentMethod({
         type: 'card',
         card: this.card,
       });
 
-      this.stripeTokenHandler(token.token, pm.paymentMethod.id);
+      this.stripeTokenHandler(token.id, paymentMethod.id);
     } catch (e) {
       this.cardErrorsTarget.textContent = e.error.message;
     }
-
-    // this.stripe.createToken(this.card).then((result) => {
-    //   if (result.error) {
-    //     this.cardErrorsTarget.textContent = result.error.message;
-    //   } else {
-    //     this.stripe
-    //       .createPaymentMethod({
-    //         type: 'card',
-    //         card: this.card,
-    //       })
-    //       .then((pm) => {
-    //         if (pm.error) {
-    //           this.cardErrorsTarget.textContent = pm.error.message;
-    //         } else {
-    //           this.stripeTokenHandler(result.token, pm.paymentMethod.id);
-    //         }
-    //       });
-    //   }
-    // });
   }
 
-  stripeTokenHandler(token, pm) {
+  async stripeTokenHandler(token, paymentMethod) {
     const hiddenInput = document.createElement('input');
     hiddenInput.setAttribute('type', 'hidden');
     hiddenInput.setAttribute('name', 'stripe_token');
-    hiddenInput.setAttribute('value', token.id);
+    hiddenInput.setAttribute('value', token);
     this.element.appendChild(hiddenInput);
 
     const pmHiddenInput = document.createElement('input');
     pmHiddenInput.setAttribute('type', 'hidden');
     pmHiddenInput.setAttribute('name', 'pm_token');
-    pmHiddenInput.setAttribute('value', pm);
+    pmHiddenInput.setAttribute('value', paymentMethod);
     this.element.appendChild(pmHiddenInput);
 
-    // Submit the form
     this.element.submit();
   }
 

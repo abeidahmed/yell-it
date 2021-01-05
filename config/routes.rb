@@ -8,5 +8,7 @@ Rails.application.routes.draw do
       resources :labels, only: %i[index]
       resources :subscriptions, only: %i[new create]
     end
+
+    resource :confirm_subscription, only: %i[show], module: :subscriptions
   end
 end
