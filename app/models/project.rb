@@ -1,7 +1,6 @@
 class Project < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
-  has_one :subscription, dependent: :destroy
 
   before_save :normalize_subdomain
 

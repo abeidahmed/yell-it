@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_05_130642) do
+ActiveRecord::Schema.define(version: 2021_01_05_140249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -31,22 +31,18 @@ ActiveRecord::Schema.define(version: 2021_01_05_130642) do
   create_table "projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "subdomain"
+    t.string "plan", default: "free", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["subdomain"], name: "index_projects_on_subdomain", unique: true
-  end
-
-  create_table "subscriptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "stripe_customer_id", default: ""
-    t.string "stripe_subscription_id", default: ""
-    t.string "card_last4", default: ""
+    t.string "stripe_customer_id"
+    t.string "stripe_subscription_id"
+    t.string "card_brand"
     t.integer "card_exp_month"
     t.integer "card_exp_year"
-    t.string "card_brand", default: ""
-    t.uuid "project_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_subscriptions_on_project_id", unique: true
+    t.string "card_last4"
+    t.index ["plan"], name: "index_projects_on_plan"
+    t.index ["stripe_customer_id", "stripe_subscription_id"], name: "index_projects_on_stripe_customer_id_and_stripe_subscription_id"
+    t.index ["subdomain"], name: "index_projects_on_subdomain", unique: true
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -62,5 +58,4 @@ ActiveRecord::Schema.define(version: 2021_01_05_130642) do
 
   add_foreign_key "memberships", "projects"
   add_foreign_key "memberships", "users"
-  add_foreign_key "subscriptions", "projects"
 end

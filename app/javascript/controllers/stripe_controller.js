@@ -43,18 +43,40 @@ export default class extends ApplicationController {
   }
 
   async stripeTokenHandler(token, paymentMethod) {
-    const hiddenInput = document.createElement('input');
-    hiddenInput.setAttribute('type', 'hidden');
-    hiddenInput.setAttribute('name', 'stripe_token');
-    hiddenInput.setAttribute('value', token.id);
-    this.element.appendChild(hiddenInput);
+    const { id, card } = token;
+    const inputTypes = [
+      {
+        name: 'stripe_token',
+        value: id,
+      },
+      {
+        name: 'pm_token',
+        value: paymentMethod,
+      },
+      {
+        name: 'subscription[card_brand]',
+        value: card.brand,
+      },
+      {
+        name: 'subscription[card_exp_month]',
+        value: card.exp_month,
+      },
+      {
+        name: 'subscription[card_exp_year]',
+        value: card.exp_year,
+      },
+      {
+        name: 'subscription[card_last4]',
+        value: card.last4,
+      },
+    ];
 
-    const pmHiddenInput = document.createElement('input');
-    pmHiddenInput.setAttribute('type', 'hidden');
-    pmHiddenInput.setAttribute('name', 'pm_token');
-    pmHiddenInput.setAttribute('value', paymentMethod);
-    this.element.appendChild(pmHiddenInput);
+    inputTypes.forEach((inputType) => {
+      const { name, value } = inputType;
+      appendHiddenElement(this.element, name, value);
+    });
 
+    // console.log(token);
     this.element.submit();
   }
 
@@ -79,4 +101,12 @@ export default class extends ApplicationController {
       },
     };
   }
+}
+
+function appendHiddenElement(element, name, value) {
+  const hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', name);
+  hiddenInput.setAttribute('value', value);
+  element.appendChild(hiddenInput);
 }
