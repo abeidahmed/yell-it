@@ -1,4 +1,7 @@
 <main class="min-h-screen bg-gray">
+  <% flash.each do |type, msg| %>
+    <p><%= msg %></p>
+  <% end %>
   <div class="container-lg py-9 px-3">
     <div class="d-md-flex">
       <div class="col-md-5">
