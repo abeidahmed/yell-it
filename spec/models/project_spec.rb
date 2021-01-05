@@ -7,6 +7,8 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many(:users) }
 
     it { is_expected.to have_many(:memberships) }
+
+    it { is_expected.to have_one(:subscription) }
   end
 
   describe "validations" do
