@@ -36,7 +36,7 @@ export default class extends ApplicationController {
         card: this.card,
       });
 
-      this.stripeTokenHandler(token.id, paymentMethod.id);
+      this.stripeTokenHandler(token, paymentMethod.id);
     } catch (e) {
       this.cardErrorsTarget.textContent = e.error.message;
     }
@@ -46,7 +46,7 @@ export default class extends ApplicationController {
     const hiddenInput = document.createElement('input');
     hiddenInput.setAttribute('type', 'hidden');
     hiddenInput.setAttribute('name', 'stripe_token');
-    hiddenInput.setAttribute('value', token);
+    hiddenInput.setAttribute('value', token.id);
     this.element.appendChild(hiddenInput);
 
     const pmHiddenInput = document.createElement('input');
