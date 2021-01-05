@@ -19,13 +19,11 @@ class App::SubscriptionsController < App::BaseController
       },
     )
 
-    subscription = Stripe::Subscription.create({
+    subscription = Stripe::Subscription.create(
       customer: customer.id,
-      items: [
-        { price: "price_1I5vshCYHrwDIsnf981UpZEc" },
-      ],
-      expand: ["latest_invoice"]
-    })
+      items: [{ price: "price_1I5vshCYHrwDIsnf981UpZEc" }],
+      expand: ["latest_invoice"],
+    )
 
     intent_id = subscription.latest_invoice.payment_intent
     return redirect_to app_confirm_subscription_path(payment_intent: intent_id) if subscription.status == "active"
