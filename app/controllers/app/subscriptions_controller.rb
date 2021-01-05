@@ -19,23 +19,28 @@ class App::SubscriptionsController < App::BaseController
       },
     )
 
-    intent = Stripe::PaymentIntent.create(
-      amount: 2900,
-      currency: "usd",
+    subscription = Stripe::Subscription.create({
       customer: customer.id,
-      description: "hello world",
-      payment_method_types: ["card"],
-    )
+      items: [
+        { price: "price_1I5vshCYHrwDIsnf981UpZEc" },
+      ],
+      expand: ["latest_invoice"]
+    })
 
-    confirm_intent = Stripe::PaymentIntent.confirm(intent.id, {
+    intent_id = subscription.latest_invoice.payment_intent
+    return redirect_to app_confirm_subscription_path(payment_intent: intent_id) if subscription.status == "active"
+
+    confirm_intent = Stripe::PaymentIntent.confirm(intent_id, {
       payment_method: params[:pm_token],
       return_url: app_confirm_subscription_url
     })
 
-    if confirm_intent.next_action
-      redirect_to confirm_intent.next_action.redirect_to_url.url
-    else
-      redirect_to app_confirm_subscription_path(payment_intent: confirm_intent.id)
-    end
+    redirect_to confirm_intent.next_action.redirect_to_url.url
+
+    # if confirm_intent.next_action
+    #   redirect_to confirm_intent.next_action.redirect_to_url.url
+    # else
+    #   redirect_to app_confirm_subscription_path(payment_intent: confirm_intent.id)
+    # end
   end
 end
