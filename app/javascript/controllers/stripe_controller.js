@@ -65,12 +65,12 @@ export default class extends ApplicationController {
   get formStyles() {
     return {
       base: {
-        color: '#32325d',
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        color: '#24292e',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI"',
         fontSmoothing: 'antialiased',
-        fontSize: '16px',
+        fontSize: '14px',
         '::placeholder': {
-          color: '#aab7c4',
+          color: '#6a737d',
         },
       },
       invalid: {
