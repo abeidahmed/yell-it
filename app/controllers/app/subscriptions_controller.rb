@@ -32,6 +32,10 @@ class App::SubscriptionsController < App::BaseController
       return_url: app_confirm_subscription_url
     })
 
-    redirect_to confirm_intent.next_action.redirect_to_url.url if confirm_intent.next_action
+    if confirm_intent.next_action
+      redirect_to confirm_intent.next_action.redirect_to_url.url
+    else
+      redirect_to app_confirm_subscription_path(payment_intent: confirm_intent.id)
+    end
   end
 end
