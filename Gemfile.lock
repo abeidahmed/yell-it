@@ -258,6 +258,9 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     stripe (5.28.0)
+    stripe_event (2.3.1)
+      activesupport (>= 3.1)
+      stripe (>= 2.8, < 6)
     thor (1.0.1)
     tilt (2.0.10)
     turbo-rails (0.5.0)
@@ -309,6 +312,7 @@ DEPENDENCIES
   shoulda-matchers (~> 4.4, >= 4.4.1)
   spring
   stripe (~> 5.28)
+  stripe_event (~> 2.3, >= 2.3.1)
   turbo-rails
   tzinfo-data
   web-console (>= 4.1.0)

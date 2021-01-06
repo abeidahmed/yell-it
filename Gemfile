@@ -12,6 +12,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "turbo-rails"
 gem "octicons_helper"
 gem "stripe", "~> 5.28"
+gem "stripe_event", "~> 2.3", ">= 2.3.1"
 # gem "redis", "~> 4.0"
 # gem "image_processing", "~> 1.2"
 
